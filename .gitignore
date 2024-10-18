@@ -106,3 +106,6 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,linux,dotnetcore,visualstudiocode
 /.vs/minimal-api/FileContentIndex
 /.vs/minimal-api/v17/TestStore/0
+/.vs/minimal-api/config
+/.vs/minimal-api/DesignTimeBuild
+/.vs/minimal-api/v17/.futdcache.v2
