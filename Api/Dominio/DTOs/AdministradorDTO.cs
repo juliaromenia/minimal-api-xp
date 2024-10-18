@@ -1,4 +1,3 @@
-
 using MinimalApi.Dominio.Enuns;
 
 namespace MinimalApi.DTOs;

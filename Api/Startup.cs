@@ -29,10 +29,12 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddAuthentication(option => {
+        services.AddAuthentication( option => 
+        {
             option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(option => {
+        }).AddJwtBearer( option => 
+        {
             option.TokenValidationParameters = new TokenValidationParameters{
                 ValidateLifetime = true,
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
@@ -72,12 +74,11 @@ public class Startup
             });
         });
 
-        services.AddDbContext<DbContexto>(options => {
-            options.UseMySql(
-                Configuration.GetConnectionString("MySql"),
-                ServerVersion.AutoDetect(Configuration.GetConnectionString("MySql"))
-            );
-        });
+        services.AddDbContext<DbContexto>(options =>
+        {
+            options.UseSqlServer(Configuration.GetConnectionString("Sql"));
+        }
+        );
 
         services.AddCors(options =>
         {
@@ -106,7 +107,7 @@ public class Startup
         app.UseEndpoints(endpoints => {
 
             #region Home
-            endpoints.MapGet("/", () => Results.Json(new Home())).AllowAnonymous().WithTags("Home");
+            endpoints.MapGet("/", () => Results.Redirect("/swagger")).WithTags("Home");
             #endregion
 
             #region Administradores

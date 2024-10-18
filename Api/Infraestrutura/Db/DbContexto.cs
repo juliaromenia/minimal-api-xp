@@ -30,13 +30,10 @@ public class DbContexto : DbContext
     {
         if(!optionsBuilder.IsConfigured)
         {
-            var stringConexao = _configuracaoAppSettings.GetConnectionString("MySql")?.ToString();
-            if(!string.IsNullOrEmpty(stringConexao))
+            var stringConexao = _configuracaoAppSettings.GetConnectionString("Sql")?.ToString();
+            if (!string.IsNullOrEmpty(stringConexao))
             {
-                optionsBuilder.UseMySql(
-                    stringConexao,
-                    ServerVersion.AutoDetect(stringConexao)
-                );
+                optionsBuilder.UseSqlServer(stringConexao);
             }
         }
     }
